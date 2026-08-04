@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechFix Bogota — Generica</title>
+<style>
+  /* ===== Design tokens (ADR-052: espaciado reducido, btn uniforme) ===== */
+  :root{
+    --bg:#F6F8FA; --surface:#FFFFFF; --texto:#0F172A; --texto-suave:#475569;
+    --marca:#0B1F3A; --acento:#F97316;
+    --borde:rgba(15,23,42,.08);
+    --sombra:0 1px 2px rgba(15,23,42,.05), 0 12px 32px rgba(15,23,42,.08);
+    --radio:14px; --max:1080px; --espacio:clamp(40px,7vw,72px);
+    --btn-h:48px; /* UNA altura de boton en toda la pagina (header, hero, cards, CTA, flotante) */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--texto);
+       font-size:clamp(16px,4vw,17px);line-height:1.65;-webkit-font-smoothing:antialiased;
+       /* patron sutil de fondo: dos resplandores radiales (densidad sin ruido) */
+       background:
+         radial-gradient(1100px 420px at 100% -5%, rgba(249,115,22,.06), transparent 60%),
+         radial-gradient(700px 320px at -10% 110%, rgba(11,31,58,.05), transparent 60%),
+         var(--bg);}
+  img{max-width:100%;display:block}
+
+  /* ===== Sticky header glass ===== */
+  header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+         padding:10px 20px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);
+         -webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+  header .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:var(--marca);letter-spacing:-.02em}
+  header nav{display:flex;gap:14px;align-items:center}
+  header nav a{font-size:13px;color:var(--texto-suave);text-decoration:none;font-weight:500}
+  header nav a:hover{color:var(--marca)}
+
+  /* ===== Boton base: la MISMA altura en todos lados ===== */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:var(--btn-h);
+       padding:0 24px;font-weight:700;font-size:15px;text-decoration:none;border-radius:12px;
+       transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
+  .btn-primary{background:var(--acento);color:#fff;box-shadow:0 6px 20px rgba(249,115,22,.3)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(249,115,22,.4)}
+  .btn-primary:active{transform:translateY(0) scale(.98)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff;background:transparent}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .btn-lg{padding:0 32px;font-size:16px}   /* primario del hero: mas ancho, misma altura */
+  .btn-sm{padding:0 18px;font-size:14px}   /* header: compacto, MISMA altura */
+
+  /* ===== Hero: gradiente, badge, h1 700, CTA con jerarquia ===== */
+  .hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;background:var(--marca)}
+  .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=60') center/cover no-repeat}
+  .hero .bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(8,20,40,.38) 0%,rgba(8,20,40,.18) 45%,rgba(8,20,40,.86) 100%)}
+  .hero .content{position:relative;z-index:1;padding:0 24px 40px;max-width:660px;text-align:left}
+  .badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:7px 14px;
+         border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+         font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+         backdrop-filter:blur(4px)}
+  .badge svg{width:14px;height:14px;color:var(--acento)}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,9vw,60px);font-weight:700;line-height:1.02;
+           letter-spacing:-.03em;color:#fff;margin-bottom:14px}
+  .hero .sub{font-size:clamp(15px,4vw,18px);color:rgba(255,255,255,.92);max-width:470px;margin-bottom:24px;line-height:1.5}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .micro{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;color:rgba(255,255,255,.8)}
+  .micro svg{width:15px;height:15px;color:var(--acento)}
+
+  /* ===== Secciones: espaciado reducido + separadores ===== */
+  section{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px;border-top:1px solid var(--borde)}
+  section:first-of-type{border-top:none}
+  section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,5vw,34px);font-weight:600;line-height:1.15;
+             letter-spacing:-.02em;margin-bottom:10px;color:var(--marca)}
+  .seccion-alt{background:var(--surface);max-width:none;border-top:1px solid var(--borde)}
+  .seccion-alt .inner{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+           color:var(--acento);margin-bottom:10px}
+
+  /* ===== Cards densas: icono + titulo + beneficio + micro-link ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
+  .card{background:var(--surface);border:1px solid var(--borde);border-radius:var(--radio);padding:20px;
+        display:flex;flex-direction:column;gap:0;box-shadow:0 1px 2px rgba(15,23,42,.04);
+        transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+  .card .ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+             background:rgba(249,115,22,.1);color:var(--acento);margin-bottom:12px}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:5px;color:var(--texto)}
+  .card p{font-size:13.5px;color:var(--texto-suave);line-height:1.5;flex:1}
+  .card .ver-mas{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:13px;font-weight:700;
+                 color:var(--marca);text-decoration:none}
+  .card .ver-mas:hover{color:var(--acento)}
+  .card .ver-mas svg{width:14px;height:14px;color:var(--acento);flex-shrink:0}
+
+  /* ===== Como trabajamos ===== */
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:24px}
+  .paso{background:var(--surface);border:1px solid var(--borde);border-radius:var(--radio);padding:18px}
+  .paso .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--acento);line-height:1}
+  .paso h3{font-size:15px;font-weight:700;margin:8px 0 4px}
+  .paso p{font-size:13px;color:var(--texto-suave);line-height:1.45}
+
+  /* ===== Sobre asimetrico ===== */
+  .sobre-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+  @media(min-width:720px){.sobre-grid{grid-template-columns:1fr 1fr}}
+  .sobre-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;box-shadow:var(--sombra)}
+  .sobre-grid p{color:var(--texto-suave)}
+
+  /* ===== Galeria: 6 fotos densas ===== */
+  .galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+  @media(min-width:720px){.galeria{grid-template-columns:repeat(3,1fr)}}
+  .galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
+               box-shadow:0 1px 2px rgba(15,23,42,.05)}
+
+  /* ===== CTA final + footer ===== */
+  .cta-final{background:var(--marca);color:#fff;text-align:center;border-top:none}
+  .cta-final h2{color:#fff}
+  .cta-final p{color:rgba(255,255,255,.85);margin-bottom:22px}
+  .cta-final .btn-ghost{margin-left:4px}
+  footer{background:var(--marca);border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);
+         text-align:center;padding:24px 24px 90px;font-size:14px}
+  footer a{color:#fff}
+
+  /* ===== WhatsApp flotante: misma altura de boton ===== */
+  .wa{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;border-radius:50%;
+      width:var(--btn-h);height:var(--btn-h);display:flex;align-items:center;justify-content:center;
+      z-index:99;box-shadow:0 8px 30px rgba(37,211,102,.45);transition:transform .2s}
+  .wa:hover{transform:scale(1.06)}
+
+  /* ===== Scroll reveal + accesibilidad ===== */
+  @media(prefers-reduced-motion:no-preference){
+    .card,.paso,.galeria img{animation:aparecer .6s ease both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes aparecer{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  }
+  a:focus-visible,button:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">TechFix Bogota</div>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto" class="btn btn-primary btn-sm">WhatsApp</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="content">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8-6.1-3.4-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+      Generica en Bogota
+    </span>
+    <h1>Tu computador vuelve a volar hoy mismo</h1>
+    <p class="sub">Reparación rápida y confiable en Bogotá</p>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" href="https://wa.me/573002223344?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+        Cotizar por WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:573002223344">Llamar</a>
+    </div>
+    <div class="micro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+      Respuesta rapida · Bogota
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <span class="eyebrow">Nuestros servicios</span>
+  <h2>Soluciones para tu negocio</h2>
+  <div class="grid"><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4L15 11.9 12.1 9z"/></svg></div><h3>Reparación de computadores de escritorio</h3><p>Recupera tu equipo en el menor tiempo posible</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Reparaci%C3%B3n%20de%20computadores%20de%20escritorio%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div><h3>Reparación de laptops y portátiles</h3><p>Soluciones portátiles sin perder tus datos</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Reparaci%C3%B3n%20de%20laptops%20y%20port%C3%A1tiles%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><h3>Configuración y reparación de redes</h3><p>Conecta toda tu oficina o casa sin fallas</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Configuraci%C3%B3n%20y%20reparaci%C3%B3n%20de%20redes%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Mantenimiento preventivo y correctivo</h3><p>Evita futuras averías con mantenimiento experto</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Mantenimiento%20preventivo%20y%20correctivo%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div><h3>Eliminación de virus y optimización</h3><p>Navega y trabaja con mayor velocidad y seguridad</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Eliminaci%C3%B3n%20de%20virus%20y%20optimizaci%C3%B3n%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>Instalación de software y drivers</h3><p>Aprovecha al máximo tu hardware con instalación profesional</p><a class="ver-mas" href="https://wa.me/573002223344?text=Hola%21%20Vi%20el%20servicio%20%27Instalaci%C3%B3n%20de%20software%20y%20drivers%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div></div>
+</section>
+
+<section id="nosotros" class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Nosotros</span>
+    <h2>Un equipo que resuelve</h2>
+    <div class="sobre-grid">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=60" alt="Tecnico reparando un equipo en su taller" loading="lazy">
+      <div>
+        <p>En TechFix Bogotá somos expertos en devolverle la vida a tus equipos. Diagnosticamos y solucionamos fallas de computadores, laptops y redes con eficiencia y precios justos, para que retomes tu trabajo sin dolores de cabeza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Como trabajamos</span>
+  <h2>Transparencia total</h2>
+  <div class="pasos">
+    <div class="paso"><div class="num">1</div><h3>Diagnostico</h3><p>Revisamos el equipo y te decimos que tiene.</p></div>
+    <div class="paso"><div class="num">2</div><h3>Presupuesto</h3><p>Te pasamos el costo antes de empezar.</p></div>
+    <div class="paso"><div class="num">3</div><h3>Aprobacion</h3><p>Solo avanzamos cuando vos confirmas.</p></div>
+    <div class="paso"><div class="num">4</div><h3>Entrega</h3><p>Te avisamos cuando esta listo y lo probamos juntos.</p></div>
+  </div>
+</section>
+
+<section class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Galeria</span>
+    <h2>Asi trabajamos</h2>
+    <div class="galeria"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy">
+<img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy">
+<img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy">
+<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy">
+<img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=60" alt="Galería de TechFix Bogota" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="contacto" class="cta-final">
+  <span class="badge" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8-6.1-3.4-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+    Contacto
+  </span>
+  <h2>¿Necesitas una mano?</h2>
+  <p>Bogota — +573002223344</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-primary btn-lg" href="https://wa.me/573002223344?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    <a class="btn btn-ghost" href="tel:573002223344">Llamar</a>
+  </div>
+</section>
+
+<footer>
+  <div>TechFix Bogota — Generica · Bogota</div>
+  <div style="margin-top:6px"><a href="tel:573002223344">+573002223344</a> · Horario consultar por WhatsApp</div>
+</footer>
+
+<a class="wa" href="https://wa.me/573002223344?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+</a>
+</body>
+</html>
