@@ -4,5 +4,6 @@ Demos de paginas web para leads (gh-pages estatico, sin Jekyll).
 - demos/la-casa-del-sabor/
 - demos/techfix-bogota/
 - demos/el-universo-de-los-ninos/
+- demos/boutique-dulce/
 
-Actualizado: base parametrizada ADR-056 (27 rubros con paleta/tipografia/titulos propios).
+Base parametrizada ADR-056 (27 rubros) + e-commerce tienda.html.
