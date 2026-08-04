@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boutique Dulce — Tienda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== Design tokens por rubro (ADR-056: plantilla e-commerce) ===== */
+  :root{
+  --bg:#FAF8FF; --surface:#FFFFFF;
+  --texto:#1E1B2E; --texto-suave:#7C7890;
+  --marca:#6D28D9; --marca-tint:rgba(109,40,217,.08);
+  --acento:#EC4899;
+  --borde:rgba(109,40,217,.08);
+  --marca-glass:rgba(109,40,217,.45);
+  --glow-acento:rgba(236,72,153,.06); --glow-marca:rgba(109,40,217,.05);
+  --sombra-acento:rgba(236,72,153,.32);
+  --sombra:0 1px 2px rgba(0,0,0,.05), 0 12px 32px rgba(0,0,0,.08);
+  --radio:14px; --max:1080px; --espacio:clamp(40px,7vw,72px);
+  --btn-h:48px;
+  --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',system-ui,sans-serif;
+}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--texto);
+       font-size:clamp(16px,4vw,17px);line-height:1.65;-webkit-font-smoothing:antialiased;
+       background:
+         radial-gradient(1100px 420px at 100% -5%, var(--glow-acento), transparent 60%),
+         radial-gradient(700px 320px at -10% 110%, var(--glow-marca), transparent 60%),
+         var(--bg);}
+  img{max-width:100%;display:block}
+
+  /* ===== Sticky header glass ===== */
+  header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+         padding:12px 20px;background:color-mix(in srgb, var(--surface) 82%, transparent);
+         backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+  @supports (animation-timeline: scroll()){
+    header{animation:header-shrink linear both;animation-timeline:scroll(root);animation-range:0 140px}
+    @keyframes header-shrink{from{padding:14px 20px}to{padding:6px 20px}}
+  }
+  header .logo{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--marca);letter-spacing:-.02em}
+  header nav{display:flex;gap:14px;align-items:center}
+  header nav a{font-size:13px;color:var(--texto-suave);text-decoration:none;font-weight:500}
+  header nav a:hover{color:var(--marca)}
+
+  /* ===== Boton base: la MISMA altura ===== */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:var(--btn-h);
+       padding:0 24px;font-weight:700;font-size:15px;text-decoration:none;border-radius:12px;
+       transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
+  .btn-primary{background:var(--acento);color:#fff;box-shadow:0 6px 20px var(--sombra-acento)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--sombra-acento)}
+  .btn-primary:active{transform:translateY(0) scale(.98)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff;background:transparent}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .btn-lg{padding:0 32px;font-size:16px}
+  .btn-sm{padding:0 18px;font-size:14px}
+
+  /* ===== Hero ===== */
+  .hero{position:relative;min-height:clamp(440px,60svh,560px);display:flex;align-items:flex-end;background:var(--marca)}
+  .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=60') center/cover no-repeat}
+  .hero .bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(8,20,40,.30) 0%,rgba(8,20,40,.12) 45%,rgba(8,20,40,.78) 100%)}
+  .hero .content{position:relative;z-index:1;padding:0 24px 40px;max-width:660px;text-align:left}
+  .badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:7px 14px;
+         border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+         font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+         backdrop-filter:blur(4px)}
+  .badge svg{width:14px;height:14px;color:var(--acento)}
+  .hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,60px);font-weight:700;line-height:1.02;
+           letter-spacing:-.03em;margin-bottom:14px;
+           background:linear-gradient(180deg,#fff 45%,rgba(255,255,255,.82) 100%);
+           -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:clamp(15px,4vw,18px);color:rgba(255,255,255,.92);max-width:470px;margin-bottom:24px;line-height:1.5}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .micro{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;color:rgba(255,255,255,.8)}
+  .micro svg{width:15px;height:15px;color:rgba(255,255,255,.7)}
+  @media(prefers-reduced-motion:no-preference){
+    .hero .content>*{animation:hero-in .7s cubic-bezier(.2,.7,.3,1) both}
+    .hero .content>*:nth-child(1){animation-delay:.05s}
+    .hero .content>*:nth-child(2){animation-delay:.18s}
+    .hero .content>*:nth-child(3){animation-delay:.32s}
+    .hero .content>*:nth-child(4){animation-delay:.46s}
+    .hero .content>*:nth-child(5){animation-delay:.6s}
+    @keyframes hero-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  }
+
+  /* ===== Secciones ===== */
+  section{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px;border-top:1px solid var(--borde)}
+  section:first-of-type{border-top:none}
+  section h2{font-family:var(--font-display);font-size:clamp(24px,5vw,34px);font-weight:600;line-height:1.15;
+             letter-spacing:-.02em;margin-bottom:8px;color:var(--marca)}
+  .seccion-alt{background:var(--surface);max-width:none;border-top:1px solid var(--borde)}
+  .seccion-alt .inner{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+           color:var(--marca);margin-bottom:10px}
+  .intro{font-size:15px;color:var(--texto-suave);max-width:560px;line-height:1.55}
+
+  /* ===== Productos: grid de cards con foto (e-commerce) ===== */
+  .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:24px}
+  .prod{background:var(--surface);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(0,0,0,.04);
+        transition:transform .25s ease,box-shadow .25s ease}
+  .prod:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+  .prod img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .prod .p-body{padding:14px;display:flex;flex-direction:column;flex:1}
+  .prod h3{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--texto)}
+  .prod p{font-size:13px;color:var(--texto-suave);line-height:1.45;flex:1;margin-bottom:12px}
+  .prod .btn{width:100%;height:42px;font-size:13px}
+
+  /* ===== Como trabajamos: timeline ===== */
+  .pasos{display:grid;gap:12px;margin-top:24px;position:relative}
+  .pasos::before{content:"";position:absolute;left:21px;top:14px;bottom:14px;width:2px;
+                 background:linear-gradient(var(--marca),var(--borde))}
+  .paso{position:relative;padding:16px 18px 16px 56px;background:var(--surface);
+        border:1px solid var(--borde);border-radius:var(--radio)}
+  .paso .num{position:absolute;left:8px;top:14px;width:28px;height:28px;border-radius:50%;
+             background:var(--marca);color:#fff;font-family:var(--font-display);
+             font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .paso h3{font-size:15px;font-weight:700;margin-bottom:3px}
+  .paso p{font-size:13px;color:var(--texto-suave);line-height:1.45}
+  @media(min-width:720px){
+    .pasos{grid-template-columns:repeat(4,1fr)}
+    .pasos::before{display:none}
+    .paso{padding:18px}
+    .paso .num{position:static;margin-bottom:10px}
+  }
+
+  /* ===== Sobre: foto con card glass ===== */
+  .sobre-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+  @media(min-width:720px){.sobre-grid{grid-template-columns:1fr 1fr}}
+  .sobre-media{position:relative}
+  .sobre-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;box-shadow:var(--sombra)}
+  .sobre-card{position:absolute;left:14px;right:14px;bottom:14px;display:flex;align-items:center;justify-content:space-between;
+              gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.55);
+              background:rgba(255,255,255,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .sobre-card strong{display:block;font-size:14px;color:var(--texto)}
+  .sobre-card span{display:block;font-size:12px;color:var(--texto-suave)}
+  .sobre-grid p{color:var(--texto-suave)}
+
+  /* ===== Galeria: carrusel scroll-snap ===== */
+  .galeria{display:grid;grid-auto-flow:column;grid-auto-columns:72%;gap:12px;margin-top:24px;
+           overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  @media(min-width:720px){.galeria{grid-auto-columns:minmax(260px,1fr)}}
+  .slide{position:relative;scroll-snap-align:center;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+         box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .slide img{width:100%;height:100%;object-fit:cover}
+  .slide::after{content:"";position:absolute;inset:0;
+                background:linear-gradient(180deg,transparent 55%,var(--marca-glass))}
+  .slide .num{position:absolute;right:12px;bottom:10px;z-index:1;font-family:var(--font-display);
+              font-size:14px;font-weight:700;letter-spacing:.08em;color:#fff}
+
+  /* ===== CTA final + footer ===== */
+  .cta-final{background:var(--marca);color:#fff;text-align:center;border-top:none;
+             background-image:radial-gradient(900px 300px at 50% 0%,rgba(255,255,255,.08),transparent 60%)}
+  .cta-final h2{color:#fff}
+  .cta-final p{color:rgba(255,255,255,.85);margin-bottom:22px}
+  footer{background:var(--marca);border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);
+         text-align:center;padding:24px 24px 90px;font-size:14px}
+  footer a{color:#fff}
+
+  /* ===== WhatsApp flotante ===== */
+  .wa{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;border-radius:50%;
+      width:var(--btn-h);height:var(--btn-h);display:flex;align-items:center;justify-content:center;
+      z-index:99;box-shadow:0 8px 30px rgba(37,211,102,.45);transition:transform .2s}
+  .wa:hover{transform:scale(1.06)}
+  @media(prefers-reduced-motion:no-preference){
+    .wa::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.55);
+               animation:wa-ring 2.4s ease-out infinite}
+    @keyframes wa-ring{0%{transform:scale(.85);opacity:1}70%{transform:scale(1.3);opacity:0}100%{opacity:0}}
+  }
+
+  /* ===== Scroll reveal + accesibilidad ===== */
+  @media(prefers-reduced-motion:no-preference){
+    .prod,.paso,.slide{animation:aparecer .6s ease both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes aparecer{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  }
+  a:focus-visible,button:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Boutique Dulce</div>
+  <nav>
+    <a href="#productos">Productos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto" class="btn btn-primary btn-sm">WhatsApp</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="content">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14.6l.1-.2L8.5 11h7.9c.7 0 1.3-.4 1.6-1l3.9-7.1L20.1 2l-3.6 6.5H7.9L4.3 1H1v2h2l3.6 7.6L5.2 13c-.2.5-.2 1 0 1.5.5 1.1 1.6 1.5 2.8 1.5h12v-2H8c-.5 0-.8-.2-.8-.4z"/></svg>
+      Tienda en Buenos Aires
+    </span>
+    <h1>Estilo único que realza tu belleza</h1>
+    <p class="sub">Vestidos, blusas y accesorios para vos</p>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+        Pedir por WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:573001112233">Llamar</a>
+    </div>
+    <div class="micro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+      Envios y retiro · Buenos Aires
+    </div>
+  </div>
+</div>
+
+<section id="productos">
+  <span class="eyebrow">Catalogo</span>
+  <h2>Nuestros productos</h2>
+  <p class="intro">Lo que buscabas, a un mensaje de distancia.</p>
+  <div class="prods"><div class="prod"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=60" alt="Venta de vestidos" loading="lazy"><div class="p-body"><h3>Venta de vestidos</h3><p>Vestidos que realzan tu figura</p><a class="btn btn-primary" href="https://wa.me/573001112233?text=Hola%21%20Me%20interesa%20el%20producto%3A%20Venta%20de%20vestidos" target="_blank" rel="noopener">Pedir por WhatsApp</a></div></div><div class="prod"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=60" alt="Venta de blusas" loading="lazy"><div class="p-body"><h3>Venta de blusas</h3><p>Blusas versátiles para todo el día</p><a class="btn btn-primary" href="https://wa.me/573001112233?text=Hola%21%20Me%20interesa%20el%20producto%3A%20Venta%20de%20blusas" target="_blank" rel="noopener">Pedir por WhatsApp</a></div></div><div class="prod"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=60" alt="Venta de accesorios" loading="lazy"><div class="p-body"><h3>Venta de accesorios</h3><p>Accesorios que completan tu look</p><a class="btn btn-primary" href="https://wa.me/573001112233?text=Hola%21%20Me%20interesa%20el%20producto%3A%20Venta%20de%20accesorios" target="_blank" rel="noopener">Pedir por WhatsApp</a></div></div><div class="prod"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=60" alt="Asesoramiento de estilo" loading="lazy"><div class="p-body"><h3>Asesoramiento de estilo</h3><p>Consejos para combinar tu outfit</p><a class="btn btn-primary" href="https://wa.me/573001112233?text=Hola%21%20Me%20interesa%20el%20producto%3A%20Asesoramiento%20de%20estilo" target="_blank" rel="noopener">Pedir por WhatsApp</a></div></div></div>
+</section>
+
+<section id="nosotros" class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Nosotros</span>
+    <h2>Nuestra tienda</h2>
+    <p class="intro">Seleccion pensada para vos.</p>
+    <div class="sobre-grid">
+      <div class="sobre-media">
+        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=60" alt="Tienda en Buenos Aires" loading="lazy">
+        <div class="sobre-card">
+          <div>
+            <strong>Boutique Dulce</strong>
+            <span>Tienda · Buenos Aires</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <p>En Boutique Dulce, en Buenos Aires, seleccionamos ropa de mujer que combina tendencia y comodidad. Nuestro objetivo es que encuentres prendas que reflejen tu personalidad y te hagan sentir segura en cada ocasión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Como comprar</span>
+  <h2>Como comprar</h2>
+  <p class="intro">Pedis, coordinamos y lo recibis.</p>
+  <div class="pasos"><div class="paso"><div class="num">1</div><h3>Elegis</h3><p>Ves el catalogo y elegis lo que te gusta.</p></div>
+<div class="paso"><div class="num">2</div><h3>Pedido</h3><p>Escribinos por WhatsApp con lo que queres.</p></div>
+<div class="paso"><div class="num">3</div><h3>Confirmacion</h3><p>Te pasamos total y forma de envio o retiro.</p></div>
+<div class="paso"><div class="num">4</div><h3>Entrega</h3><p>Lo recibis en tu puerta o en el local.</p></div></div>
+</section>
+
+<section class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Galeria</span>
+    <h2>Galeria</h2>
+    <p class="intro">Desliza para ver mas.</p>
+    <div class="galeria"><div class="slide"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=60" alt="Galería de Boutique Dulce" loading="lazy"><span class="num">01</span></div>
+<div class="slide"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=60" alt="Galería de Boutique Dulce" loading="lazy"><span class="num">02</span></div>
+<div class="slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=60" alt="Galería de Boutique Dulce" loading="lazy"><span class="num">03</span></div></div>
+  </div>
+</section>
+
+<section id="contacto" class="cta-final">
+  <span class="badge" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14.6l.1-.2L8.5 11h7.9c.7 0 1.3-.4 1.6-1l3.9-7.1L20.1 2l-3.6 6.5H7.9L4.3 1H1v2h2l3.6 7.6L5.2 13c-.2.5-.2 1 0 1.5.5 1.1 1.6 1.5 2.8 1.5h12v-2H8c-.5 0-.8-.2-.8-.4z"/></svg>
+    Contacto
+  </span>
+  <h2>¿Necesitas una mano?</h2>
+  <p>Buenos Aires — +573001112233</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-primary btn-lg" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    <a class="btn btn-ghost" href="tel:573001112233">Llamar</a>
+  </div>
+</section>
+
+<footer>
+  <div>Boutique Dulce — Tienda · Buenos Aires</div>
+  <div style="margin-top:6px"><a href="tel:573001112233">+573001112233</a> · Horario consultar por WhatsApp</div>
+</footer>
+
+<a class="wa" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+</a>
+</body>
+</html>
