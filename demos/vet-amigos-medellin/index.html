@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vet Amigos Medellin — Veterinaria</title>
+<style>
+  /* ===== Design tokens (ADR-052: espaciado reducido, btn uniforme; paleta Bond Vet navy+coral) ===== */
+  :root{
+    --bg:#FAFAF8; --surface:#FFFFFF; --texto:#1C2B36; --texto-suave:#5B6B78;
+    --marca:#0F3D5C; --acento:#FF6B5E;
+    --borde:rgba(28,43,54,.08);
+    --sombra:0 1px 2px rgba(28,43,54,.05), 0 12px 32px rgba(28,43,54,.08);
+    --radio:14px; --max:1080px; --espacio:clamp(40px,7vw,72px);
+    --btn-h:48px; /* UNA altura de boton en toda la pagina */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--texto);
+       font-size:clamp(16px,4vw,17px);line-height:1.65;-webkit-font-smoothing:antialiased;
+       background:
+         radial-gradient(1100px 420px at 100% -5%, rgba(255,107,94,.07), transparent 60%),
+         radial-gradient(700px 320px at -10% 110%, rgba(15,61,92,.05), transparent 60%),
+         var(--bg);}
+  img{max-width:100%;display:block}
+
+  /* ===== Sticky header glass ===== */
+  header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+         padding:10px 20px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);
+         -webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+  header .logo{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:var(--marca);letter-spacing:-.02em}
+  header nav{display:flex;gap:14px;align-items:center}
+  header nav a{font-size:13px;color:var(--texto-suave);text-decoration:none;font-weight:500}
+  header nav a:hover{color:var(--marca)}
+
+  /* ===== Boton base: la MISMA altura en todos lados ===== */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:var(--btn-h);
+       padding:0 24px;font-weight:700;font-size:15px;text-decoration:none;border-radius:12px;
+       transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
+  .btn-primary{background:var(--acento);color:#fff;box-shadow:0 6px 20px rgba(255,107,94,.32)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,107,94,.42)}
+  .btn-primary:active{transform:translateY(0) scale(.98)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff;background:transparent}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .btn-lg{padding:0 32px;font-size:16px}   /* primario del hero: mas ancho, misma altura */
+  .btn-sm{padding:0 18px;font-size:14px}   /* header: compacto, MISMA altura */
+
+  /* ===== Hero: gradiente, badge, h1 700, CTA con jerarquia ===== */
+  .hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;background:var(--marca)}
+  .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=60') center/cover no-repeat}
+  .hero .bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(12,20,30,.38) 0%,rgba(12,20,30,.18) 45%,rgba(12,20,30,.86) 100%)}
+  .hero .content{position:relative;z-index:1;padding:0 24px 40px;max-width:660px;text-align:left}
+  .badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:7px 14px;
+         border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+         font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+         backdrop-filter:blur(4px)}
+  .badge svg{width:14px;height:14px;color:var(--acento)}
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(36px,9vw,60px);font-weight:700;line-height:1.02;
+           letter-spacing:-.03em;color:#fff;margin-bottom:14px}
+  .hero .sub{font-size:clamp(15px,4vw,18px);color:rgba(255,255,255,.92);max-width:470px;margin-bottom:24px;line-height:1.5}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .micro{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;color:rgba(255,255,255,.8)}
+  .micro svg{width:15px;height:15px;color:var(--acento)}
+
+  /* ===== Secciones: espaciado reducido + separadores ===== */
+  section{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px;border-top:1px solid var(--borde)}
+  section:first-of-type{border-top:none}
+  section h2{font-family:'Fraunces',serif;font-size:clamp(24px,5vw,34px);font-weight:600;line-height:1.15;
+             letter-spacing:-.02em;margin-bottom:10px;color:var(--marca)}
+  .seccion-alt{background:var(--surface);max-width:none;border-top:1px solid var(--borde)}
+  .seccion-alt .inner{max-width:var(--max);margin:0 auto;padding:var(--espacio) 24px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+           color:var(--acento);margin-bottom:10px}
+
+  /* ===== Cards densas ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
+  .card{background:var(--surface);border:1px solid var(--borde);border-radius:var(--radio);padding:20px;
+        display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(28,43,54,.04);
+        transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+  .card .ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+             background:rgba(15,61,92,.08);color:var(--marca);margin-bottom:12px}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:5px;color:var(--texto)}
+  .card p{font-size:13.5px;color:var(--texto-suave);line-height:1.5;flex:1}
+  .card .ver-mas{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:13px;font-weight:700;
+                 color:var(--marca);text-decoration:none}
+  .card .ver-mas:hover{color:var(--acento)}
+  .card .ver-mas svg{width:14px;height:14px;color:var(--acento);flex-shrink:0}
+
+  /* ===== Como trabajamos ===== */
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:24px}
+  .paso{background:var(--surface);border:1px solid var(--borde);border-radius:var(--radio);padding:18px}
+  .paso .num{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--acento);line-height:1}
+  .paso h3{font-size:15px;font-weight:700;margin:8px 0 4px}
+  .paso p{font-size:13px;color:var(--texto-suave);line-height:1.45}
+
+  /* ===== Sobre asimetrico ===== */
+  .sobre-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+  @media(min-width:720px){.sobre-grid{grid-template-columns:1fr 1fr}}
+  .sobre-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;box-shadow:var(--sombra)}
+  .sobre-grid p{color:var(--texto-suave)}
+
+  /* ===== Galeria: 6 fotos densas ===== */
+  .galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+  @media(min-width:720px){.galeria{grid-template-columns:repeat(3,1fr)}}
+  .galeria img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
+               box-shadow:0 1px 2px rgba(28,43,54,.05)}
+
+  /* ===== CTA final + footer ===== */
+  .cta-final{background:var(--marca);color:#fff;text-align:center;border-top:none}
+  .cta-final h2{color:#fff}
+  .cta-final p{color:rgba(255,255,255,.85);margin-bottom:22px}
+  footer{background:var(--marca);border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);
+         text-align:center;padding:24px 24px 90px;font-size:14px}
+  footer a{color:#fff}
+
+  /* ===== WhatsApp flotante: misma altura de boton ===== */
+  .wa{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;border-radius:50%;
+      width:var(--btn-h);height:var(--btn-h);display:flex;align-items:center;justify-content:center;
+      z-index:99;box-shadow:0 8px 30px rgba(37,211,102,.45);transition:transform .2s}
+  .wa:hover{transform:scale(1.06)}
+
+  /* ===== Scroll reveal + accesibilidad ===== */
+  @media(prefers-reduced-motion:no-preference){
+    .card,.paso,.galeria img{animation:aparecer .6s ease both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    @keyframes aparecer{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  }
+  a:focus-visible,button:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Vet Amigos Medellin</div>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto" class="btn btn-primary btn-sm">WhatsApp</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="content">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21c-3 0-6-2-6-5.5C6 12 8 10 12 10s6 2 6 5.5c0 3.5-3 5.5-6 5.5z"/></svg>
+      Veterinaria en Medellin
+    </span>
+    <h1>Cuidamos a tu mascota como familia</h1>
+    <p class="sub">Salud y bienestar para tu mejor amigo</p>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+        Escribinos por WhatsApp</a>
+      <a class="btn btn-ghost" href="tel:573001112233">Llamar</a>
+    </div>
+    <div class="micro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+      Respuesta en minutos · Medellin
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <span class="eyebrow">Nuestros servicios</span>
+  <h2>Todo para la salud de tu mascota</h2>
+  <div class="grid"><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 2-3.5 2-5.5 0-2-1.5-3.5-3.5-3.5-1 0-2 .5-2.5 1-.5-.5-1.5-1-2.5-1C10.5 5 9 6.5 9 8.5c0 2 .5 4 2 5.5"/><path d="M12 21c-3 0-6-2-6-5.5C6 12 8 10 12 10s6 2 6 5.5c0 3.5-3 5.5-6 5.5z"/></svg></div><h3>Consulta general</h3><p>Diagnóstico preciso para su tranquilidad</p><a class="ver-mas" href="https://wa.me/573001112233?text=Hola%21%20Vi%20el%20servicio%20%27Consulta%20general%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v9"/><path d="M8 7h8"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/></svg></div><h3>Vacunación</h3><p>Protección contra enfermedades prevenibles</p><a class="ver-mas" href="https://wa.me/573001112233?text=Hola%21%20Vi%20el%20servicio%20%27Vacunaci%C3%B3n%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6c6 0 10 4 16 4"/><path d="M4 10c6 0 10 4 16 4"/><path d="M4 14c4 0 7 2 9 6"/></svg></div><h3>Cirugía menor</h3><p>Procedimientos seguros y con pronta recuperación</p><a class="ver-mas" href="https://wa.me/573001112233?text=Hola%21%20Vi%20el%20servicio%20%27Cirug%C3%ADa%20menor%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div><div class="card"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11l9-8 9 8"/><path d="M5 9v11h14V9"/></svg></div><h3>Peluquería</h3><p>Estética y limpieza para su comodidad</p><a class="ver-mas" href="https://wa.me/573001112233?text=Hola%21%20Vi%20el%20servicio%20%27Peluquer%C3%ADa%27%20en%20su%20pagina%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Ver mas <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></a></div></div>
+</section>
+
+<section id="nosotros" class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Nosotros</span>
+    <h2>Un equipo que ama lo que hace</h2>
+    <div class="sobre-grid">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=60" alt="Veterinario atendiendo a una mascota en consulta" loading="lazy">
+      <div>
+        <p>En Vet Amigos Medellin ofrecemos atención veterinaria cercana y de confianza. Nos dedicamos a la salud y el cuidado integral de tu mascota, con un equipo apasionado por los animales y un trato amable en cada visita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Como trabajamos</span>
+  <h2>Sin vueltas, paso a paso</h2>
+  <div class="pasos">
+    <div class="paso"><div class="num">1</div><h3>Diagnostico</h3><p>Revisamos a tu mascota con calma y te explicamos todo.</p></div>
+    <div class="paso"><div class="num">2</div><h3>Presupuesto</h3><p>Te pasamos los costos antes de hacer cualquier cosa.</p></div>
+    <div class="paso"><div class="num">3</div><h3>Aprobacion</h3><p>Solo avanzamos cuando vos confirmas por WhatsApp.</p></div>
+    <div class="paso"><div class="num">4</div><h3>Seguimiento</h3><p>Te contamos como evoluciona y quedamos atentos.</p></div>
+  </div>
+</section>
+
+<section class="seccion-alt">
+  <div class="inner">
+    <span class="eyebrow">Galeria</span>
+    <h2>Asi cuidamos a nuestros pacientes</h2>
+    <div class="galeria"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy">
+<img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy">
+<img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy">
+<img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy">
+<img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy">
+<img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=60" alt="Galería de Vet Amigos Medellin" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="contacto" class="cta-final">
+  <span class="badge" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25)">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21c-3 0-6-2-6-5.5C6 12 8 10 12 10s6 2 6 5.5c0 3.5-3 5.5-6 5.5z"/></svg>
+    Contacto
+  </span>
+  <h2>¿Tu mascota necesita atencion?</h2>
+  <p>Medellin — +573001112233</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-primary btn-lg" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+    <a class="btn btn-ghost" href="tel:573001112233">Llamar</a>
+  </div>
+</section>
+
+<footer>
+  <div>Vet Amigos Medellin — Veterinaria · Medellin</div>
+  <div style="margin-top:6px"><a href="tel:573001112233">+573001112233</a> · Horario consultar por WhatsApp</div>
+</footer>
+
+<a class="wa" href="https://wa.me/573001112233?text=Hola%21%20Vi%20su%20demo%20de%20pagina%20web%20y%20quiero%20saber%20mas." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.7 5.6L2 22l4.5-1.6C8.2 21.5 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.4 14.1c-.2.7-1.2 1.2-2 1.4-.5.1-1.1.2-3.4-.7-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.6.8 2 .9 2.1.1.1.1.3 0 .5-.3.5-1.2 1.4-1.2 1.4s.6 1 1.1 1.5c.6.6 1.7 1.5 2.8 2 .9.4 1.5.5 1.8.3.3-.3.5-.6.7-1 .2-.4.7-.4 1.1-.2.4.2 2.4 1.1 2.8 1.3.4.2.6.3.7.5.1.1.1.7-.1 1.4z"/></svg>
+</a>
+</body>
+</html>
