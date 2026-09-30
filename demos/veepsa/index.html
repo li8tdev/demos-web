@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es-EC">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios Empresariales VEEP S.A. — Limpieza industrial, hospitalaria y comercial en Ecuador</title>
+<meta name="description" content="Limpieza industrial, hospitalaria, comercial y de oficinas en Manta, Guayaquil, Cuenca, Durán y todo Ecuador. Triple certificación ISO por Bureau Veritas, miembro ISSA y programa Ecuador Carbono Cero. Servicio desde 1998.">
+<meta name="theme-color" content="#0B1418">
+<script>document.documentElement.className += " js";</script>
+<meta property="og:title" content="VEEP S.A. — Limpieza industrial y hospitalaria en Ecuador">
+<meta property="og:description" content="Planificamos, ejecutamos y supervisamos cada servicio con personal capacitado y evidencia de control de calidad.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1418'/%3E%3Cpath d='M8 9l8 15 8-15' fill='none' stroke='%2312B886' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#0B1418; --carbon:#101C22; --carbon-2:#152730;
+  --papel:#F5F8F7; --superficie:#FFFFFF; --linea:#E3EAE7;
+  --texto:#132025; --texto-suave:#5A6B71; --texto-claro:#C9D6D5; --texto-claro-2:#8FA3A6;
+  --marca:#0E3B4A; --marca-tint:rgba(14,59,74,.06); --marca-tint-2:rgba(14,59,74,.12);
+  --acento:#12B886; --acento-oscuro:#0E9C71; --acento-tint:rgba(18,184,134,.12);
+  --btn-h:48px; --radio:16px; --radio-s:12px;
+  --espacio:clamp(52px,7vw,88px);
+  --sombra-s:0 1px 2px rgba(11,20,24,.06), 0 8px 24px -12px rgba(11,20,24,.14);
+  --sombra-m:0 18px 50px -18px rgba(11,20,24,.32);
+  --font-display:"Sora",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --contenedor:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-family:var(--font-body); color:var(--texto); background:var(--papel);
+  font-size:16px; line-height:1.6; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-display); line-height:1.08; margin:0; letter-spacing:-.022em}
+h1{font-weight:800}
+h2{font-weight:700; font-size:clamp(1.6rem,1.05rem + 2.3vw,2.65rem)}
+h3{font-weight:700; font-size:clamp(1.05rem,.98rem + .4vw,1.3rem); letter-spacing:-.015em}
+p{margin:0}
+.wrap{width:100%; max-width:var(--contenedor); margin-inline:auto; padding-inline:clamp(18px,5vw,40px)}
+.eyebrow{
+  font-family:var(--font-body); font-weight:600; font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--marca); display:inline-flex; align-items:center; gap:8px;
+}
+.eyebrow::before{content:""; width:22px; height:1px; background:currentColor; opacity:.5}
+.intro{color:var(--texto-suave); font-size:clamp(.98rem,.95rem + .2vw,1.08rem); max-width:62ch}
+.sec{padding-block:var(--espacio); position:relative}
+.sec--alt{background:var(--superficie); border-top:1px solid var(--linea); border-bottom:1px solid var(--linea)}
+.sec--dark{background:var(--tinta); color:#fff}
+.sec--dark .intro,.sec--dark .eyebrow{color:var(--texto-claro)}
+.sec--dark .eyebrow{color:var(--acento)}
+.cabecera-sec{display:flex; flex-direction:column; gap:12px; margin-bottom:clamp(26px,4vw,44px); max-width:70ch}
+.cabecera-sec .intro{margin-top:2px}
+
+/* ---------- Botones: UNA sola altura para toda la pagina ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  height:var(--btn-h); padding:0 22px; border-radius:999px; border:1px solid transparent;
+  font-family:var(--font-body); font-weight:600; font-size:.94rem; cursor:pointer;
+  transition:transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:17px; height:17px; flex:none}
+.btn--primario{background:var(--acento); color:#04150F; box-shadow:0 12px 28px -14px rgba(18,184,134,.85)}
+.btn--primario:hover{background:var(--acento-oscuro); transform:translateY(-2px)}
+.btn--ghost{border-color:rgba(255,255,255,.28); color:#fff; background:rgba(255,255,255,.04); backdrop-filter:blur(6px)}
+.btn--ghost:hover{border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.1); transform:translateY(-2px)}
+.btn--linea{border-color:var(--linea); background:var(--superficie); color:var(--texto)}
+.btn--linea:hover{border-color:var(--marca); transform:translateY(-2px); box-shadow:var(--sombra-s)}
+.btn--oscuro{background:var(--marca); color:#fff}
+.btn--oscuro:hover{background:#0A2C38; transform:translateY(-2px)}
+.btn--lg{padding:0 30px}
+.btn--sm{padding:0 16px; font-size:.88rem}
+.btn--ancho{width:100%}
+
+/* ---------- Header ---------- */
+.header{
+  position:fixed; inset:0 0 auto 0; z-index:60;
+  background:rgba(11,20,24,.78); backdrop-filter:blur(14px) saturate(1.4);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:background-color .3s ease, box-shadow .3s ease, padding .3s ease;
+  padding-block:14px;
+}
+.header--compacto{background:rgba(11,20,24,.95); padding-block:6px; box-shadow:0 10px 30px -18px rgba(0,0,0,.9)}
+.header__in{display:flex; align-items:center; gap:18px}
+.logo{display:flex; align-items:center; gap:11px; color:#fff; flex:none}
+.logo__marca{
+  width:40px; height:40px; border-radius:11px; background:linear-gradient(140deg,#12B886,#0E9C71);
+  display:grid; place-items:center; box-shadow:0 10px 24px -12px rgba(18,184,134,.9); transition:height .3s ease,width .3s ease;
+}
+.logo__marca svg{width:20px; height:20px}
+.logo__txt{display:flex; flex-direction:column; line-height:1.1}
+.logo__txt b{font-family:var(--font-display); font-weight:800; font-size:1.06rem; letter-spacing:.02em}
+.logo__txt span{font-size:.64rem; letter-spacing:.13em; text-transform:uppercase; color:var(--texto-claro-2)}
+.nav{margin-left:auto; display:flex; align-items:center; gap:4px}
+.nav a{
+  font-size:.9rem; font-weight:500; color:var(--texto-claro); padding:9px 12px; border-radius:9px;
+  transition:color .16s ease, background-color .16s ease;
+}
+.nav a:hover{color:#fff; background:rgba(255,255,255,.07)}
+.header__cta{margin-left:10px}
+.burger{
+  display:none; width:44px; height:44px; margin-left:auto; border-radius:11px;
+  border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); cursor:pointer;
+  align-items:center; justify-content:center;
+}
+.burger span{display:block; width:19px; height:2px; background:#fff; border-radius:2px; position:relative}
+.burger span::before,.burger span::after{content:""; position:absolute; left:0; width:19px; height:2px; background:#fff; border-radius:2px; transition:transform .25s ease}
+.burger span::before{top:-6px} .burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.panel-movil{
+  display:none; flex-direction:column; gap:2px; padding:14px 0 20px;
+  border-top:1px solid rgba(255,255,255,.1); margin-top:12px;
+}
+.panel-movil a{padding:13px 6px; color:var(--texto-claro); font-weight:500; border-bottom:1px solid rgba(255,255,255,.06)}
+.panel-movil .btn{margin-top:14px}
+.panel-movil.abierto{display:flex}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative; min-height:clamp(560px,74svh,720px); display:flex; align-items:flex-end;
+  padding-top:clamp(104px,14vw,140px); padding-bottom:clamp(30px,5vw,52px);
+  background:var(--tinta); color:#fff; overflow:hidden; isolation:isolate;
+}
+.hero__bg{position:absolute; inset:0; z-index:-2}
+.hero__bg img{width:100%; height:100%; object-fit:cover; object-position:center 32%; transform:scale(1.06); animation:zoomLento 22s ease-out forwards}
+@keyframes zoomLento{to{transform:scale(1)}}
+.hero__velo{
+  position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(120% 90% at 12% 8%, rgba(11,20,24,.35) 0%, rgba(11,20,24,.86) 62%, rgba(11,20,24,.97) 100%),
+    linear-gradient(180deg, rgba(11,20,24,.55) 0%, rgba(11,20,24,.2) 38%, rgba(11,20,24,.94) 100%);
+}
+.hero__grid{display:grid; gap:clamp(26px,4vw,44px); grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); align-items:end}
+.hero h1{
+  font-size:clamp(1.85rem,1rem + 3.9vw,3.35rem); margin:16px 0 0;
+  background:linear-gradient(180deg,#fff 55%,rgba(255,255,255,.78));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero__lead{margin-top:16px; color:var(--texto-claro); font-size:clamp(1rem,.95rem + .3vw,1.13rem); max-width:56ch}
+.hero__acciones{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px}
+.hero__datos{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:26px; padding-top:20px; border-top:1px solid rgba(255,255,255,.14)}
+.hero__dato{display:flex; align-items:baseline; gap:8px}
+.hero__dato b{font-family:var(--font-display); font-size:1.28rem; font-weight:700; color:#fff}
+.hero__dato span{font-size:.82rem; color:var(--texto-claro-2); max-width:15ch; line-height:1.25}
+.hero__panel{
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radio); padding:20px; backdrop-filter:blur(16px) saturate(1.3);
+}
+.hero__panel h2{font-size:1.02rem; color:#fff; font-weight:700}
+.hero__panel p{font-size:.86rem; color:var(--texto-claro); margin-top:6px}
+.hero__lista{list-style:none; margin:16px 0 0; padding:0; display:grid; gap:9px}
+.hero__lista li{display:flex; gap:10px; font-size:.88rem; color:var(--texto-claro); align-items:flex-start}
+.hero__lista svg{width:16px; height:16px; flex:none; margin-top:3px; color:var(--acento)}
+
+/* ---------- Sello de confianza ---------- */
+.sellos{background:var(--carbon); color:#fff; border-top:1px solid rgba(255,255,255,.08); padding-block:16px; overflow:hidden}
+.sellos__pista{display:flex; gap:clamp(26px,4vw,54px); align-items:center; animation:desfile 34s linear infinite; width:max-content}
+.sellos__item{
+  display:flex; align-items:center; gap:10px; font-size:.8rem; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--texto-claro-2); white-space:nowrap;
+}
+.sellos__item b{color:#fff; font-weight:700}
+.sellos__item i{width:6px; height:6px; border-radius:50%; background:var(--acento); display:block}
+@keyframes desfile{to{transform:translateX(-50%)}}
+
+/* ---------- Servicios ---------- */
+.rejilla-serv{display:grid; grid-template-columns:repeat(auto-fit,minmax(286px,1fr)); gap:clamp(14px,2vw,22px)}
+.serv{
+  background:var(--superficie); border:1px solid var(--linea); border-radius:var(--radio); overflow:hidden;
+  display:flex; flex-direction:column; position:relative;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, border-color .3s ease;
+}
+.serv:hover{transform:translateY(-5px); box-shadow:var(--sombra-m); border-color:var(--marca-tint-2)}
+.serv__foto{position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--carbon-2)}
+.serv__foto img{width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.serv:hover .serv__foto img{transform:scale(1.06)}
+.serv__tag{
+  position:absolute; top:12px; left:12px; background:rgba(11,20,24,.82); color:#fff;
+  font-size:.68rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+  padding:6px 11px; border-radius:999px; backdrop-filter:blur(6px);
+}
+.serv__cuerpo{padding:20px 20px 22px; display:flex; flex-direction:column; gap:9px; flex:1}
+.serv__cuerpo p{font-size:.9rem; color:var(--texto-suave)}
+.serv__pie{margin-top:auto; padding-top:6px}
+.enlace-serv{
+  display:inline-flex; align-items:center; gap:7px; font-size:.85rem; font-weight:600; color:var(--marca);
+}
+.enlace-serv svg{width:15px; height:15px; transition:transform .22s ease}
+.enlace-serv:hover svg{transform:translateX(4px)}
+
+/* ---------- Proceso ---------- */
+.proceso{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:clamp(18px,2.4vw,26px); position:relative; margin-top:6px}
+.paso{position:relative; padding-top:30px}
+.paso::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:rgba(255,255,255,.14)}
+.paso__num{
+  position:absolute; top:-4px; left:0; transform:translateY(-50%);
+  width:34px; height:34px; border-radius:50%; background:var(--marca); color:#fff;
+  display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:.82rem;
+  border:2px solid var(--tinta); box-shadow:0 0 0 4px rgba(18,184,134,.16);
+}
+.paso h3{font-size:1.02rem; color:#fff; margin-top:14px}
+.paso p{font-size:.87rem; color:var(--texto-claro); margin-top:7px}
+
+/* ---------- Franja industria ---------- */
+.franja{
+  border-radius:var(--radio); overflow:hidden; position:relative; min-height:320px;
+  display:grid; align-items:end; color:#fff;
+}
+.franja img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1}
+.franja::after{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(11,20,24,.94) 8%,rgba(11,20,24,.62) 58%,rgba(11,20,24,.35))}
+.franja__cuerpo{padding:clamp(22px,4vw,40px); max-width:60ch}
+.franja h2{font-size:clamp(1.4rem,1rem + 1.5vw,2.15rem); color:#fff}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+.chip{
+  font-size:.8rem; font-weight:500; padding:7px 13px; border-radius:999px;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); color:#fff;
+}
+
+/* ---------- Carrusel especialidades ---------- */
+.carrusel{position:relative; margin-top:4px}
+.carrusel__pista{
+  display:grid; grid-auto-flow:column; grid-auto-columns:minmax(74%,1fr); gap:16px;
+  overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:16px;
+  scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth;
+}
+.carrusel__pista::-webkit-scrollbar{display:none}
+.slide{
+  scroll-snap-align:start; background:var(--superficie); border:1px solid var(--linea);
+  border-radius:var(--radio); overflow:hidden; position:relative;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.slide:hover{transform:translateY(-4px); box-shadow:var(--sombra-m)}
+.slide__foto{position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--carbon-2)}
+.slide__foto img{width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.slide:hover .slide__foto img{transform:scale(1.05)}
+.slide__num{
+  position:absolute; top:14px; left:14px; z-index:2; font-family:var(--font-display); font-weight:700;
+  font-size:.78rem; letter-spacing:.1em; color:#fff; background:linear-gradient(140deg,var(--marca),#0A2C38);
+  padding:5px 10px; border-radius:8px;
+}
+.slide__cuerpo{padding:16px 18px 20px}
+.slide__cuerpo p{font-size:.86rem; color:var(--texto-suave); margin-top:6px}
+.carrusel__ctrl{display:flex; gap:9px; margin-top:14px}
+.ctrl{
+  width:var(--btn-h); height:var(--btn-h); border-radius:50%; border:1px solid var(--linea);
+  background:var(--superficie); display:grid; place-items:center; cursor:pointer; color:var(--marca);
+  transition:border-color .2s ease, transform .2s ease;
+}
+.ctrl:hover{border-color:var(--marca); transform:translateY(-2px)}
+.ctrl svg{width:18px; height:18px}
+
+/* ---------- Cobertura ---------- */
+.cobertura{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,4vw,52px); align-items:center}
+.mapa-caja{
+  background:var(--superficie); border:1px solid var(--linea); border-radius:var(--radio); padding:clamp(20px,3vw,30px);
+}
+.mapa-caja h3{margin-bottom:12px}
+.provincias{display:flex; flex-wrap:wrap; gap:8px}
+.provincia{
+  font-size:.82rem; font-weight:500; padding:8px 13px; border-radius:9px;
+  background:var(--marca-tint); color:var(--marca); border:1px solid transparent;
+  transition:transform .2s ease, background-color .2s ease;
+}
+.provincia:hover{transform:translateY(-2px); background:var(--marca-tint-2)}
+.ciudades{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:10px}
+.ciudades li{display:flex; gap:10px; align-items:center; font-size:.9rem; color:var(--texto-suave)}
+.ciudades svg{width:16px; height:16px; color:var(--marca); flex:none}
+
+/* ---------- Nosotros ---------- */
+.nosotros{display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr); gap:clamp(22px,3vw,40px); align-items:center}
+.foto-globo{position:relative; border-radius:var(--radio); overflow:hidden; min-height:380px}
+.foto-globo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.tarjeta-cristal{
+  position:absolute; left:14px; right:14px; bottom:14px;
+  background:rgba(11,20,24,.62); border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--radio-s); padding:16px 18px; backdrop-filter:blur(14px) saturate(1.4); color:#fff;
+}
+.tarjeta-cristal b{font-family:var(--font-display); font-size:1rem; display:block}
+.tarjeta-cristal span{font-size:.8rem; color:var(--texto-claro)}
+.lista-check{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px}
+.lista-check li{display:flex; gap:11px; align-items:flex-start; font-size:.92rem; color:var(--texto-suave)}
+.lista-check svg{width:18px; height:18px; color:var(--acento-oscuro); flex:none; margin-top:2px}
+.contadores{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:26px}
+.contador{background:var(--marca-tint); border:1px solid var(--linea); border-radius:var(--radio-s); padding:16px}
+.contador b{font-family:var(--font-display); font-size:clamp(1.4rem,1.1rem + .9vw,1.9rem); font-weight:700; color:var(--marca); display:block}
+.contador span{font-size:.8rem; color:var(--texto-suave)}
+
+/* ---------- Formulario ---------- */
+.contacto{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(22px,3.4vw,46px); align-items:start}
+.form{background:var(--superficie); border:1px solid var(--linea); border-radius:var(--radio); padding:clamp(20px,3vw,30px); box-shadow:var(--sombra-s)}
+.campos{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.campo{display:flex; flex-direction:column; gap:6px}
+.campo--ancho{grid-column:1/-1}
+.campo label{font-size:.78rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--texto-suave)}
+.campo input,.campo select,.campo textarea{
+  font-family:var(--font-body); font-size:.94rem; color:var(--texto);
+  background:var(--papel); border:1px solid var(--linea); border-radius:10px;
+  padding:12px 13px; height:var(--btn-h); transition:border-color .18s ease, box-shadow .18s ease;
+}
+.campo textarea{height:auto; min-height:104px; resize:vertical; line-height:1.5}
+.campo input:focus,.campo select:focus,.campo textarea:focus{
+  outline:none; border-color:var(--marca); box-shadow:0 0 0 3px var(--marca-tint);
+}
+.form__pie{margin-top:18px; display:flex; flex-direction:column; gap:12px}
+.form__nota{font-size:.76rem; color:var(--texto-suave)}
+.datos-contacto{display:grid; gap:12px; margin-top:22px}
+.dato-contacto{display:flex; gap:12px; align-items:center; background:var(--superficie); border:1px solid var(--linea); border-radius:var(--radio-s); padding:14px 16px}
+.dato-contacto svg{width:19px; height:19px; color:var(--marca); flex:none}
+.dato-contacto b{display:block; font-size:.92rem}
+.dato-contacto span{font-size:.8rem; color:var(--texto-suave)}
+
+/* ---------- Reseña ---------- */
+.resena{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(22px,3vw,44px); align-items:center}
+.resena__cita{
+  background:var(--superficie); border:1px solid var(--linea); border-left:3px solid var(--acento);
+  border-radius:var(--radio-s); padding:clamp(20px,3vw,30px);
+}
+.resena__cita p{font-size:clamp(1rem,.96rem + .35vw,1.16rem); color:var(--texto); font-style:italic}
+.resena__autor{margin-top:14px; font-size:.82rem; color:var(--texto-suave); font-style:normal}
+.estrellas{display:flex; gap:3px; margin-bottom:12px}
+.estrellas svg{width:18px; height:18px; color:#F2B01E}
+
+/* ---------- CTA final ---------- */
+.cta-final{
+  background:linear-gradient(140deg,var(--carbon) 0%,var(--marca) 100%);
+  color:#fff; border-radius:var(--radio); padding:clamp(26px,4.4vw,52px);
+  display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:26px; align-items:center; position:relative; overflow:hidden;
+}
+.cta-final::after{
+  content:""; position:absolute; right:-90px; top:-90px; width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle,rgba(18,184,134,.32),transparent 68%);
+}
+.cta-final h2{color:#fff}
+.cta-final p{color:var(--texto-claro); margin-top:12px}
+.cta-final__acciones{display:flex; flex-wrap:wrap; gap:12px; position:relative; z-index:1}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--tinta); color:var(--texto-claro); padding-block:clamp(34px,5vw,56px) 26px; margin-top:var(--espacio)}
+.footer__grid{display:grid; grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,.8fr)); gap:clamp(22px,3vw,40px)}
+.footer h4{color:#fff; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:14px}
+.footer ul{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+.footer a,.footer li{font-size:.88rem; color:var(--texto-claro-2)}
+.footer a:hover{color:var(--acento)}
+.footer__base{
+  margin-top:34px; padding-top:20px; border-top:1px solid rgba(255,255,255,.1);
+  display:flex; flex-wrap:wrap; gap:10px 20px; justify-content:space-between; font-size:.78rem; color:var(--texto-claro-2);
+}
+.nota-muestra{display:block; margin-top:6px; font-size:.74rem; color:#7A8C90}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa{
+  position:fixed; right:clamp(14px,3vw,26px); bottom:clamp(14px,3vw,26px); z-index:70;
+  height:var(--btn-h); padding:0 20px; border-radius:999px; background:#1FAF54; color:#fff;
+  display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:.92rem;
+  box-shadow:0 16px 34px -14px rgba(31,175,84,.9);
+  transition:transform .2s ease, background-color .2s ease;
+}
+.wa:hover{transform:translateY(-3px); background:#189A48}
+.wa svg{width:20px; height:20px}
+.wa::after{
+  content:""; position:absolute; inset:0; border-radius:999px; border:2px solid rgba(31,175,84,.6);
+  animation:pulso 2.6s ease-out infinite; pointer-events:none;
+}
+@keyframes pulso{0%{transform:scale(1); opacity:.75} 70%{transform:scale(1.28); opacity:0} 100%{opacity:0}}
+
+/* ---------- Animacion de entrada ---------- */
+/* Solo se oculta si el JS esta activo: sin JS la pagina se ve completa. */
+.js .rev{opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+.js .rev.visible{opacity:1; transform:none}
+.rev[data-delay="1"]{transition-delay:.07s}
+.rev[data-delay="2"]{transition-delay:.14s}
+.rev[data-delay="3"]{transition-delay:.21s}
+.rev[data-delay="4"]{transition-delay:.28s}
+.hero__anim{opacity:0; transform:translateY(22px); animation:subir .8s cubic-bezier(.2,.7,.3,1) forwards}
+.hero__anim:nth-child(1){animation-delay:.08s}
+.hero__anim:nth-child(2){animation-delay:.2s}
+.hero__anim:nth-child(3){animation-delay:.32s}
+.hero__anim:nth-child(4){animation-delay:.44s}
+.hero__anim:nth-child(5){animation-delay:.56s}
+@keyframes subir{to{opacity:1; transform:none}}
+:focus-visible{outline:3px solid var(--acento); outline-offset:3px; border-radius:6px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .nav a{display:none}
+  .nav .header__cta{display:none}
+  .burger{display:flex}
+  .hero__grid{grid-template-columns:1fr; align-items:start}
+  /* El panel de sectores pasa a chips deslizables: el hero no puede comerse la pantalla */
+  .hero__panel{order:2; padding:15px 16px; background:rgba(255,255,255,.06)}
+  .hero__panel h2{font-size:.95rem}
+  .hero__panel p{display:none}
+  .hero__lista{grid-auto-flow:column; grid-auto-columns:max-content; gap:8px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; -ms-overflow-style:none}
+  .hero__lista::-webkit-scrollbar{display:none}
+  .hero__lista li{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:999px; padding:7px 13px; font-size:.8rem; white-space:nowrap; align-items:center}
+  .hero__lista li svg{display:none}
+  .cobertura,.nosotros,.contacto,.resena,.cta-final{grid-template-columns:1fr}
+  .cta-final__acciones{justify-content:flex-start}
+}
+@media (max-width:820px){
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .carrusel__pista{grid-auto-columns:minmax(82%,1fr)}
+}
+@media (max-width:620px){
+  .campos{grid-template-columns:1fr}
+  .contadores{grid-template-columns:1fr 1fr}
+  .footer__grid{grid-template-columns:1fr}
+  .hero{min-height:auto; padding-top:96px}
+  .hero__dato b{font-size:1.08rem}
+  .hero__dato span{font-size:.76rem}
+  .hero__acciones .btn{width:100%}
+  .wa span{display:none}
+  .wa{padding:0; width:var(--btn-h); justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important}
+  .rev{opacity:1; transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="wrap header__in">
+    <a class="logo" href="#inicio" aria-label="VEEP — inicio">
+      <span class="logo__marca" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none"><path d="M8 9l8 15 8-15" stroke="#04150F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="logo__txt"><b>VEEP</b><span>Servicios Empresariales S.A.</span></span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#empresa">Empresa</a>
+      <a class="btn btn--primario btn--sm header__cta" href="#cotizar">Solicitar cotización</a>
+    </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="panelMovil" aria-label="Abrir menú"><span></span></button>
+  </div>
+  <div class="wrap">
+    <div class="panel-movil" id="panelMovil">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#empresa">Empresa</a>
+      <a class="btn btn--primario btn--ancho" href="#cotizar">Solicitar cotización</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <div class="hero__bg"><img src="img/hero.jpg" alt="Equipo de limpieza hospitalaria de VEEP en una instalación de salud" fetchpriority="high"></div>
+  <div class="hero__velo"></div>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="eyebrow hero__anim">Triple certificación ISO · Bureau Veritas · Desde 1998</span>
+        <h1 class="hero__anim">Limpieza industrial y hospitalaria con control de calidad, en todo Ecuador</h1>
+        <p class="hero__lead hero__anim">Planificamos, ejecutamos y supervisamos cada servicio con personal capacitado, procesos controlados y evidencia de cumplimiento en campo.</p>
+        <div class="hero__acciones hero__anim">
+          <a class="btn btn--primario btn--lg" href="#cotizar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H7l-3 3z"/></svg>
+            Solicitar cotización
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#servicios">
+            Ver servicios
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="hero__datos hero__anim">
+          <div class="hero__dato"><b>1998</b><span>trabajando con empresas ecuatorianas</span></div>
+          <div class="hero__dato"><b>ISO 9001<span aria-hidden="true">/</span>14001<span aria-hidden="true">/</span>45001</b><span>certificación vigente</span></div>
+          <div class="hero__dato"><b>9</b><span>provincias con operación activa</span></div>
+        </div>
+      </div>
+      <aside class="hero__panel hero__anim">
+        <h2>Sectores que atendemos</h2>
+        <p>Personal uniformizado, supervisión en sitio y reporte con evidencias.</p>
+        <ul class="hero__lista">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Industria y plantas de producción</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Hospitales, clínicas y laboratorios</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Oficinas, bancos y edificios corporativos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Comercios, bodegas y post construcción</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Hogares y condominios</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELLOS ===== -->
+<section class="sellos" aria-label="Certificaciones y membresías">
+  <div class="sellos__pista" id="pistaSellos">
+    <span class="sellos__item"><i></i>ISO 9001 · <b>Calidad</b></span>
+    <span class="sellos__item"><i></i>ISO 14001 · <b>Ambiental</b></span>
+    <span class="sellos__item"><i></i>ISO 45001 · <b>Seguridad y salud</b></span>
+    <span class="sellos__item"><i></i><b>Bureau Veritas</b> · certificador</span>
+    <span class="sellos__item"><i></i>Miembro <b>ISSA</b></span>
+    <span class="sellos__item"><i></i><b>Ecuador Carbono Cero</b></span>
+    <span class="sellos__item"><i></i><b>Sello Empresa Segura</b></span>
+    <span class="sellos__item"><i></i>Operación desde <b>1998</b></span>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="cabecera-sec rev">
+      <span class="eyebrow">Servicios</span>
+      <h2>Una línea de servicio para cada tipo de instalación</h2>
+      <p class="intro">Cada espacio tiene su protocolo, su frecuencia y su nivel de exigencia. Estos son los seis frentes que cubrimos hoy en Ecuador.</p>
+    </div>
+
+    <div class="rejilla-serv">
+      <article class="serv rev" data-delay="1">
+        <div class="serv__foto"><span class="serv__tag">Industria</span><img loading="lazy" src="img/techos.jpg" alt="Limpieza de techos y galpones industriales"></div>
+        <div class="serv__cuerpo">
+          <h3>Limpieza industrial</h3>
+          <p>Plantas, galpones, naves y áreas de proceso. Equipos de trabajo para limpieza pesada, con protocolos de seguridad en altura y espacios confinados.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="industrial" href="#cotizar">Cotizar limpieza industrial<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="serv rev" data-delay="2">
+        <div class="serv__foto"><span class="serv__tag">Salud</span><img loading="lazy" src="img/hospitalaria.jpg" alt="Limpieza y desinfección hospitalaria"></div>
+        <div class="serv__cuerpo">
+          <h3>Limpieza hospitalaria</h3>
+          <p>Hospitales, clínicas y consultorios. Personal formado en desinfección y manejo de residuos, con la técnica y los productos que exige el sector salud.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="hospitalaria" href="#cotizar">Cotizar limpieza hospitalaria<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="serv rev" data-delay="3">
+        <div class="serv__foto"><span class="serv__tag">Corporativo</span><img loading="lazy" src="img/oficinas.jpg" alt="Desinfección de oficinas corporativas"></div>
+        <div class="serv__cuerpo">
+          <h3>Oficinas y comercios</h3>
+          <p>Servicio diario, interdiario o por jornada, en horario que no interrumpe la operación. Su equipo y sus visitantes encuentran un espacio impecable.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="oficinas" href="#cotizar">Cotizar limpieza de oficinas<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="serv rev" data-delay="1">
+        <div class="serv__foto"><span class="serv__tag">Altura</span><img loading="lazy" src="img/vidrios.jpg" alt="Limpieza de vidrios en altura"></div>
+        <div class="serv__cuerpo">
+          <h3>Edificios y fachadas</h3>
+          <p>Vidrios, fachadas y aluminios hasta 20 metros de altura con pértiga de agua a presión: menos riesgo, sin operarios colgados de la fachada.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="edificios" href="#cotizar">Cotizar limpieza de edificios<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="serv rev" data-delay="2">
+        <div class="serv__foto"><span class="serv__tag">Textiles</span><img loading="lazy" src="img/casa.jpg" alt="Limpieza profunda de textiles y hogares"></div>
+        <div class="serv__cuerpo">
+          <h3>Hogares y textiles</h3>
+          <p>Limpieza doméstica programada y lavado profundo de colchones, muebles y alfombras con máquinas y productos especializados.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="hogares" href="#cotizar">Cotizar limpieza de hogar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+
+      <article class="serv rev" data-delay="3">
+        <div class="serv__foto"><span class="serv__tag">Alimentos</span><img loading="lazy" src="img/alimentos.jpg" alt="Limpieza de áreas de proceso de alimentos"></div>
+        <div class="serv__cuerpo">
+          <h3>Alimentos y post construcción</h3>
+          <p>Áreas de proceso, rack y tanqueros con protocolo sanitario; entrega de obra lista para operar, con limpieza fina y acondicionamiento.</p>
+          <div class="serv__pie"><a class="enlace-serv" data-wa="alimentos y post construcción" href="#cotizar">Cotizar este servicio<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="sec sec--dark" id="proceso">
+  <div class="wrap">
+    <div class="cabecera-sec rev">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Un servicio que se puede auditar, no solo mirar</h2>
+      <p class="intro">Nuestro enfoque es integral: diagnosticamos, planificamos, ejecutamos, supervisamos en campo y reportamos con evidencias. Usted recibe resultados verificables, no una promesa.</p>
+    </div>
+    <div class="proceso">
+      <div class="paso rev" data-delay="1"><span class="paso__num">01</span><h3>Diagnóstico</h3><p>Levantamiento del área, tipo de superficie, flujo de personas y nivel de exigencia sanitaria.</p></div>
+      <div class="paso rev" data-delay="2"><span class="paso__num">02</span><h3>Planificación</h3><p>Frecuencias, insumos, maquinaria y dotación de personal dimensionados para el sitio.</p></div>
+      <div class="paso rev" data-delay="3"><span class="paso__num">03</span><h3>Ejecución</h3><p>Equipos capacitados y uniformados, con protocolos escritos por tipo de instalación.</p></div>
+      <div class="paso rev" data-delay="4"><span class="paso__num">04</span><h3>Supervisión y reporte</h3><p>Control de calidad en sitio, registro con evidencias e informes para su equipo de gestión.</p></div>
+    </div>
+
+    <div class="franja rev" style="margin-top:clamp(30px,5vw,54px)">
+      <img loading="lazy" src="img/industria.jpg" alt="Limpieza de bodega industrial con brazos mecánicos">
+      <div class="franja__cuerpo">
+        <h2>Al delegar la limpieza, su equipo vuelve a su negocio</h2>
+        <p class="intro" style="color:var(--texto-claro); margin-top:12px">Cubrimos la operación completa —insumos, personal, supervisión y reemplazos— para que su gente se concentre en producir. Un solo proveedor, un solo responsable.</p>
+        <div class="chips">
+          <span class="chip">Tratamiento de pisos</span>
+          <span class="chip">Limpieza de vidrios en altura</span>
+          <span class="chip">Post construcción</span>
+          <span class="chip">Cisternas</span>
+          <span class="chip">Jardinería y fumigación</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESPECIALIDADES (carrusel) ===== -->
+<section class="sec sec--alt" id="especialidades">
+  <div class="wrap">
+    <div class="cabecera-sec rev">
+      <span class="eyebrow">Especialidades</span>
+      <h2>Trabajos que no cualquier empresa de limpieza puede hacer</h2>
+      <p class="intro">Servicios puntuales de alta exigencia técnica, contratados solos o dentro de un contrato mensual.</p>
+    </div>
+
+    <div class="carrusel rev">
+      <div class="carrusel__pista" id="pistaCarrusel">
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">01</span><img loading="lazy" src="img/pisos.jpg" alt="Tratamiento y lavado de pisos industriales"></div>
+          <div class="slide__cuerpo"><h3>Tratamiento para pisos</h3><p>Protección y embellecimiento de superficies de alto tráfico para alargar su vida útil.</p></div>
+        </article>
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">02</span><img loading="lazy" src="img/vidrios.jpg" alt="Limpieza de vidrios en altura con pértiga"></div>
+          <div class="slide__cuerpo"><h3>Vidrios hasta 20 m</h3><p>Pértigas con agua a presión y cepillo suave: sin arañar la superficie y sin riesgo de altura.</p></div>
+        </article>
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">03</span><img loading="lazy" src="img/postobra.jpg" alt="Limpieza fina post construcción"></div>
+          <div class="slide__cuerpo"><h3>Post construcción</h3><p>Limpieza de obra y acondicionamiento para entregar el espacio listo para operar.</p></div>
+        </article>
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">04</span><img loading="lazy" src="img/cisterna.jpg" alt="Lavado y desinfección de cisternas"></div>
+          <div class="slide__cuerpo"><h3>Lavado de cisternas</h3><p>Lavado y desinfección de tanques de agua, recomendado cada seis meses.</p></div>
+        </article>
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">05</span><img loading="lazy" src="img/fachada.jpg" alt="Limpieza de fachadas de edificios"></div>
+          <div class="slide__cuerpo"><h3>Fachadas y aluminios</h3><p>Vidrio y alucobond recuperados sin manchas, con equipo propio y protocolo de seguridad.</p></div>
+        </article>
+        <article class="slide">
+          <div class="slide__foto"><span class="slide__num">06</span><img loading="lazy" src="img/marina.jpg" alt="Limpieza de embarcaciones marinas"></div>
+          <div class="slide__cuerpo"><h3>Embarcaciones y tanqueros</h3><p>Espacios de trabajo especiales: naves, cubiertas y tanqueros de aceite.</p></div>
+        </article>
+      </div>
+      <div class="carrusel__ctrl">
+        <button class="ctrl" id="atras" aria-label="Ver anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="ctrl" id="adelante" aria-label="Ver siguientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COBERTURA ===== -->
+<section class="sec" id="cobertura">
+  <div class="wrap cobertura">
+    <div class="rev">
+      <span class="eyebrow">Cobertura</span>
+      <h2 style="margin-top:12px">Donde esté su operación, allí llega VEEP</h2>
+      <p class="intro" style="margin-top:12px">Tenemos presencia operativa consolidada en nueve provincias y atendemos cualquier punto del país. Los equipos se asignan por zona, con supervisión local.</p>
+      <ul class="ciudades">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg> Manta · Guayaquil · Cuenca · Durán</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg> Guayas · Manabí · Santo Domingo de los Tsáchilas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg> Azuay · Pichincha · El Oro · Tungurahua</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg> Carchi · Imbabura y todo el Ecuador</li>
+      </ul>
+    </div>
+    <div class="mapa-caja rev" data-delay="2">
+      <h3>Provincias con operación activa</h3>
+      <div class="provincias">
+        <span class="provincia">Guayas</span><span class="provincia">Manabí</span><span class="provincia">Santo Domingo</span>
+        <span class="provincia">Azuay</span><span class="provincia">Pichincha</span><span class="provincia">El Oro</span>
+        <span class="provincia">Tungurahua</span><span class="provincia">Carchi</span><span class="provincia">Imbabura</span>
+      </div>
+      <div style="margin-top:22px; padding-top:18px; border-top:1px solid var(--linea)">
+        <p style="font-size:.9rem; color:var(--texto-suave)">¿Su planta o su clínica está fuera de estas provincias? Consultamos disponibilidad y le respondemos con una propuesta concreta.</p>
+        <a class="btn btn--linea btn--ancho" style="margin-top:14px" href="#cotizar">Consultar disponibilidad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EMPRESA ===== -->
+<section class="sec sec--alt" id="empresa">
+  <div class="wrap nosotros">
+    <div class="foto-globo rev">
+      <img loading="lazy" src="img/hospitalaria.jpg" alt="Personal de VEEP en labores de limpieza hospitalaria">
+      <div class="tarjeta-cristal">
+        <b>Servicios Empresariales VEEP S.A.</b>
+        <span>Empresa ecuatoriana de limpieza profesional · desde 1998</span>
+      </div>
+    </div>
+    <div class="rev" data-delay="2">
+      <span class="eyebrow">La empresa</span>
+      <h2 style="margin-top:12px">Más de 25 años limpiando lo que no se puede improvisar</h2>
+      <p class="intro" style="margin-top:12px">Trabajamos con personal capacitado, productos de uso profesional y una cultura de seguridad y responsabilidad ambiental respaldada por certificaciones internacionales.</p>
+      <ul class="lista-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Triple certificación ISO otorgada por Bureau Veritas: calidad, gestión ambiental y seguridad y salud en el trabajo.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Miembro de ISSA, la red internacional del sector de limpieza.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Programa Ecuador Carbono Cero: medición y reducción de nuestra huella de carbono.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Sello Empresa Segura y reconocimiento a un entorno laboral equitativo e inclusivo.</li>
+      </ul>
+      <div class="contadores">
+        <div class="contador"><b data-contador="27" data-sufijo="+">0</b><span>años de operación continua</span></div>
+        <div class="contador"><b data-contador="9">0</b><span>provincias atendidas</span></div>
+        <div class="contador"><b data-contador="6">0</b><span>líneas de servicio</span></div>
+        <div class="contador"><b data-contador="20">0</b><span>metros de altura en vidrios</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COTIZAR ===== -->
+<section class="sec" id="cotizar">
+  <div class="wrap contacto">
+    <div class="rev">
+      <span class="eyebrow">Cotización</span>
+      <h2 style="margin-top:12px">Cuéntenos qué necesita limpiar y le respondemos con una propuesta</h2>
+      <p class="intro" style="margin-top:12px">Con el tipo de instalación y la ciudad ya podemos orientarle sobre frecuencia, personal y alcance del servicio.</p>
+      <div class="datos-contacto">
+        <div class="dato-contacto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H7l-3 3z"/></svg>
+          <div><b>Atención comercial</b><span>asis.comercial@veepsa.com</span></div>
+        </div>
+        <div class="dato-contacto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><b>Lunes a viernes</b><span>horario de oficina · emergencias por WhatsApp</span></div>
+        </div>
+        <div class="dato-contacto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div><b>Cobertura</b><span>Manta, Guayaquil, Cuenca, Durán y todo Ecuador</span></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="form rev" data-delay="2" id="formCotiza" novalidate>
+      <div class="campos">
+        <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Su nombre" required></div>
+        <div class="campo"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de la empresa"></div>
+        <div class="campo"><label for="ciudad">Ciudad</label><input id="ciudad" name="ciudad" type="text" placeholder="Manta, Guayaquil…" required></div>
+        <div class="campo">
+          <label for="tipo">Tipo de instalación</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Seleccione una opción</option>
+            <option>Industria / planta / galpón</option>
+            <option>Hospital, clínica o consultorio</option>
+            <option>Oficina o local comercial</option>
+            <option>Banco o edificio corporativo</option>
+            <option>Casa o condominio</option>
+            <option>Otro (lo detallo abajo)</option>
+          </select>
+        </div>
+        <div class="campo campo--ancho"><label for="mensaje">Detalle del requerimiento</label><textarea id="mensaje" name="mensaje" placeholder="Área aproximada, frecuencia deseada, horario en que podemos trabajar…"></textarea></div>
+      </div>
+      <div class="form__pie">
+        <button class="btn btn--primario btn--ancho" type="submit">Enviar solicitud por WhatsApp</button>
+        <a class="btn btn--linea btn--ancho" href="mailto:asis.comercial@veepsa.com?subject=Solicitud%20de%20cotizaci%C3%B3n%20de%20limpieza">Prefiero escribir por correo</a>
+        <p class="form__nota">Muestra de prototipo: el formulario abre WhatsApp con los datos ya escritos. En la versión final el mensaje entra directo a su correo comercial o a su CRM, sin salir del sitio.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== RESEÑA ===== -->
+<section class="sec sec--alt">
+  <div class="wrap resena">
+    <div class="rev">
+      <span class="eyebrow">Clientes</span>
+      <h2 style="margin-top:12px">Lo que dicen quienes ya trabajan con VEEP</h2>
+      <p class="intro" style="margin-top:12px">La calificación pública del negocio en Google es <b>Excelente</b>, sobre 8 reseñas de clientes corporativos y particulares.</p>
+      <a class="btn btn--oscuro" style="margin-top:20px" href="https://www.google.com/search?q=VEEP+Servicios+Empresariales+limpieza+Ecuador" target="_blank" rel="noopener">Ver reseñas en Google</a>
+    </div>
+    <figure class="resena__cita rev" data-delay="2" style="margin:0">
+      <div class="estrellas" aria-label="5 de 5">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      </div>
+      <blockquote><p>“Brinda un servicio excepcional y de calidad, con profesionalismo en cada tarea que realizan. No dudamos en recomendarlos.”</p></blockquote>
+      <figcaption class="resena__autor">Reseña publicada en Google · cliente corporativo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-final rev">
+      <div>
+        <h2>¿Programamos una visita técnica sin costo?</h2>
+        <p>Vemos la instalación, medimos el alcance real y le entregamos una propuesta con frecuencias y equipo asignado.</p>
+      </div>
+      <div class="cta-final__acciones">
+        <a class="btn btn--primario btn--lg" href="#cotizar">Solicitar cotización</a>
+        <a class="btn btn--ghost btn--lg" href="mailto:asis.comercial@veepsa.com?subject=Visita%20t%C3%A9cnica">Escribir por correo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="#inicio" style="margin-bottom:14px">
+          <span class="logo__marca" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M8 9l8 15 8-15" stroke="#04150F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="logo__txt"><b>VEEP</b><span>Servicios Empresariales S.A.</span></span>
+        </a>
+        <p style="font-size:.88rem; max-width:44ch">Limpieza industrial, hospitalaria, comercial y doméstica en Ecuador. Personal capacitado, supervisión en sitio y certificaciones internacionales.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Limpieza industrial</a></li>
+          <li><a href="#servicios">Limpieza hospitalaria</a></li>
+          <li><a href="#servicios">Oficinas y comercios</a></li>
+          <li><a href="#servicios">Edificios y fachadas</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:asis.comercial@veepsa.com">asis.comercial@veepsa.com</a></li>
+          <li><a href="https://wa.me/593996058646" target="_blank" rel="noopener">WhatsApp comercial</a></li>
+          <li>Manta · Guayaquil · Cuenca · Durán</li>
+          <li>Lunes a viernes, horario de oficina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>Copyright © 2016-2026 Servicios Empresariales VEEP S.A.</span>
+      <span>Muestra de rediseño (prototipo) preparada por Luis González · <a href="https://byluis.design" target="_blank" rel="noopener">byluis.design</a></span>
+    </div>
+    <span class="nota-muestra">Propuesta de estructura y estilo. No es el sitio final: los enlaces, el formulario y el contenido se conectan durante el desarrollo.</span>
+  </div>
+</footer>
+
+<a class="wa" id="waFlotante" href="https://wa.me/593996058646?text=Hola%2C%20quisiera%20una%20cotizaci%C3%B3n%20de%20limpieza%20profesional." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.36-1.4a9.9 9.9 0 004.68 1.18h.01c5.43 0 9.84-4.4 9.84-9.84 0-2.63-1.02-5.1-2.88-6.96A9.78 9.78 0 0012.04 2zm0 1.8c2.15 0 4.16.84 5.68 2.36a7.98 7.98 0 012.35 5.68c0 4.44-3.6 8.04-8.04 8.04-1.4 0-2.78-.37-3.99-1.07l-.29-.17-2.96.78.79-2.89-.18-.3a7.96 7.96 0 01-1.22-4.24c0-4.44 3.61-8.05 8.05-8.05zm-3.6 4.32c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.09 0 1.23.9 2.42 1.02 2.58.13.17 1.78 2.83 4.36 3.86 2.14.85 2.58.68 3.04.64.46-.04 1.5-.61 1.71-1.2.21-.6.21-1.1.15-1.21-.06-.1-.23-.17-.48-.29-.25-.13-1.5-.74-1.74-.82-.23-.09-.4-.13-.57.12-.17.25-.66.83-.81.99-.15.17-.3.19-.55.06-.25-.12-1.07-.4-2.04-1.26-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.38-.78-1.88-.18-.42-.37-.4-.51-.4z"/></svg>
+  <span>Escríbanos</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "593996058646";
+  var pref = {
+    "industrial":"Hola, necesito cotizar limpieza industrial.",
+    "hospitalaria":"Hola, necesito cotizar limpieza hospitalaria.",
+    "oficinas":"Hola, necesito cotizar limpieza de oficinas.",
+    "edificios":"Hola, necesito cotizar limpieza de edificios y vidrios en altura.",
+    "hogares":"Hola, necesito cotizar limpieza de hogar y textiles.",
+    "alimentos y post construcción":"Hola, necesito cotizar limpieza de áreas de alimentos y post construcción."
+  };
+
+  /* Header compacto al hacer scroll */
+  var header = document.getElementById("header");
+  var ultimo = 0;
+  function alScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if (y > 40 && !header.classList.contains("header--compacto")) header.classList.add("header--compacto");
+    else if (y <= 40) header.classList.remove("header--compacto");
+    ultimo = y;
+  }
+  window.addEventListener("scroll", alScroll, {passive:true});
+  alScroll();
+
+  /* Menu movil */
+  var burger = document.getElementById("burger");
+  var panel = document.getElementById("panelMovil");
+  burger.addEventListener("click", function(){
+    var abierto = panel.classList.toggle("abierto");
+    burger.setAttribute("aria-expanded", abierto ? "true" : "false");
+  });
+  panel.addEventListener("click", function(e){
+    if (e.target.tagName === "A"){ panel.classList.remove("abierto"); burger.setAttribute("aria-expanded","false"); }
+  });
+
+  /* Reveal al hacer scroll */
+  var elementos = document.querySelectorAll(".rev");
+  if ("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("visible"); obs.unobserve(en.target); }
+      });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:.12});
+    elementos.forEach(function(el){ obs.observe(el); });
+  } else {
+    elementos.forEach(function(el){ el.classList.add("visible"); });
+  }
+
+  /* Contadores animados */
+  var contadores = document.querySelectorAll("[data-contador]");
+  function animarContador(el){
+    var fin = parseInt(el.getAttribute("data-contador"), 10);
+    var sufijo = el.getAttribute("data-sufijo") || "";
+    var t0 = null, dur = 1200;
+    function paso(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var suavizado = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(fin * suavizado) + sufijo;
+      if (p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if ("IntersectionObserver" in window){
+    var obsC = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if (en.isIntersecting){ animarContador(en.target); obsC.unobserve(en.target); }
+      });
+    }, {threshold:.5});
+    contadores.forEach(function(el){ obsC.observe(el); });
+  } else {
+    contadores.forEach(function(el){ el.textContent = el.getAttribute("data-contador") + (el.getAttribute("data-sufijo")||""); });
+  }
+
+  /* Duplicar la pista de sellos para que el desfile no tenga salto */
+  var pista = document.getElementById("pistaSellos");
+  if (pista) pista.innerHTML += pista.innerHTML;
+
+  /* Carrusel */
+  var pistaC = document.getElementById("pistaCarrusel");
+  function desplazar(dir){
+    var ancho = pistaC.querySelector(".slide").getBoundingClientRect().width + 16;
+    pistaC.scrollBy({left: dir * ancho, behavior:"smooth"});
+  }
+  document.getElementById("adelante").addEventListener("click", function(){ desplazar(1); });
+  document.getElementById("atras").addEventListener("click", function(){ desplazar(-1); });
+
+  /* Enlaces de servicio: llevan al formulario con el tipo preseleccionado */
+  document.querySelectorAll(".enlace-serv").forEach(function(a){
+    a.addEventListener("click", function(){
+      var t = a.getAttribute("data-wa");
+      var sel = document.getElementById("tipo");
+      if (!sel) return;
+      var objetivo = "Otro (lo detallo abajo)";
+      if (/industrial/i.test(t)) objetivo = "Industria / planta / galpón";
+      else if (/hospitalaria/i.test(t)) objetivo = "Hospital, clínica o consultorio";
+      else if (/oficinas/i.test(t)) objetivo = "Oficina o local comercial";
+      else if (/edificios/i.test(t)) objetivo = "Banco o edificio corporativo";
+      else if (/hogares/i.test(t)) objetivo = "Casa o condominio";
+      sel.value = objetivo;
+      var detalle = document.getElementById("mensaje");
+      if (detalle && !detalle.value) detalle.value = pref[t] || "";
+    });
+  });
+
+  /* Formulario -> WhatsApp con los datos ya escritos */
+  var form = document.getElementById("formCotiza");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var nombre = document.getElementById("nombre").value.trim();
+    var empresa = document.getElementById("empresa").value.trim();
+    var ciudad = document.getElementById("ciudad").value.trim();
+    var tipo = document.getElementById("tipo").value;
+    var mensaje = document.getElementById("mensaje").value.trim();
+    if (!nombre || !ciudad || !tipo){
+      var faltante = !nombre ? "nombre" : (!ciudad ? "ciudad" : "tipo de instalación");
+      alert("Falta completar: " + faltante + ".");
+      return;
+    }
+    var texto = "Hola, solicito cotización de limpieza.\n"
+      + "Nombre: " + nombre + "\n"
+      + (empresa ? "Empresa: " + empresa + "\n" : "")
+      + "Ciudad: " + ciudad + "\n"
+      + "Tipo de instalación: " + tipo + "\n"
+      + (mensaje ? "Detalle: " + mensaje : "");
+    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+
+  /* Red de seguridad: si el observer no dispara (navegador viejo, captura headless,
+     JS a medias), el contenido se muestra igual en vez de quedar invisible. */
+  setTimeout(function(){
+    if (document.querySelectorAll(".rev.visible").length === 0){
+      elementos.forEach(function(el){ el.classList.add("visible"); });
+      contadores.forEach(function(el){
+        el.textContent = el.getAttribute("data-contador") + (el.getAttribute("data-sufijo") || "");
+      });
+    }
+  }, 1600);
+})();
+</script>
+</body>
+</html>
